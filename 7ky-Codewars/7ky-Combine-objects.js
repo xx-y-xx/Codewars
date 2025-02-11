@@ -5,28 +5,24 @@ const objA = { a: 10, b: 20, c: 30 }
 const objB = { a: 3, c: 6, d: 3 }
 combine(objA, objB) // Returns { a: 13, b: 20, c: 36, d: 3 }
 
-🔹function combine() {
+function combine() {
   // Your code here
 }
 */
-const obj = {};
+/*
+🔹function combine(obj) {
+    const resultObj = {};        
+
+}
+*/
 const objA = { a: 10, b: 20, c: 30 }
 const objB = { a: 3, c: 6, d: 3 }
-// const resultObj = {};
-function combine(obj) {
-    const resultObj = {};
-    for (key in obj) {
-        if (key === resultObj.hasOwnProperty('key')) {
-            console.log(key)
-        }        
-    }
+function combine(...obj) {
+    return obj.reduce((acc, currentObject) => {        
+        for (let prop in currentObject) {
+            prop in acc ? acc[prop] += currentObject[prop] : acc[prop] = currentObject[prop]
+        }
+        return acc;},{});
+        // return resultСombine;
 }
-
-
-// for (key in objA){
-//     console.log(objA[key])
-//     console.log(key)
-// }
-
-console.log(combine(objA))
-console.log(combine(objB))
+console.log(combine(objA, objB));
