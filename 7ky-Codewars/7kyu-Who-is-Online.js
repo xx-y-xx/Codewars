@@ -60,6 +60,7 @@ friends = [{
     lastActivity: 104
 }]
 
+/* 🔹 Через цикл FOR
 const whosOnline = (friends) => {
     resultFriends = {};
     for (let i = 0; i < friends.length; i++) {
@@ -83,9 +84,35 @@ const whosOnline = (friends) => {
     }
     return resultFriends;
 }
-
-whosOnline(friends)
+*/
 
 // console.log(friends[i].username + ' → away');
 // console.log(friends[i].username + ' → online');
 // console.log(friends[i].username + ' → offline');
+
+// return resultFrends
+
+
+/* 🔹 Через  reduce*/
+const whosOnline = (friends) => {
+    return friends.reduce((acc, current) => {
+        let category;
+
+        if (current.status === 'online' && current.lastActivity > 10) {
+            category = 'away';
+        } else if (current.status === 'online') {
+            category = 'online';
+        } else {
+            category = 'offline';
+        }
+
+        if (!acc[category]) {
+            acc[category] = [];
+        }
+
+        acc[category].push(current.username);
+
+        return acc;
+    }, {});
+}
+console.log(whosOnline(friends))
