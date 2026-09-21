@@ -5,7 +5,7 @@
 Если длина строки четная, верните 2 средних символа.
 
 Пример:
- --> "es"
+ "test"--> "es"
 "testing" --> "t"
 "middle" --> "dd"
 "A" --> "A"
@@ -27,7 +27,7 @@ function getMiddle(s) {
     result = s.slice((s.length / 2) - 1, (s.length / 2) + 1);
   }
   return result;
-}  
+}
 console.log(getMiddle("testing"))
 console.log(getMiddle("test"))
 
